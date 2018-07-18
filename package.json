@@ -1,0 +1,28 @@
+{
+  "name": "warsawjs-workshop-22-converter",
+  "version": "1.0.0",
+  "description": "WarsawJS Workshops #22 group 3 application - testing exercise app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Tuhaj/warsawjs-workshop-22-converter-.git"
+  },
+  "keywords": [
+    "WarsawJS",
+    "tests",
+    "tutorial",
+    "workshop"
+  ],
+  "author": "Piotr Zientara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tuhaj/warsawjs-workshop-22-converter/issues"
+  },
+  "homepage": "https://github.com/Tuhaj/warsawjs-workshop-22-converter#readme",
+  "dependencies": {
+    "jest": "^23.4.1"
+  }
+}
