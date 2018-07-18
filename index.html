@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WarsawJS - exchange rate</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400|Lato" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <span>Warsaw<strong>JS</strong></span>
+    </header>
+    <main>
+        <section class="exchange">
+            <div class="currency">
+                <select id="input-currency">
+                    <option value="PLN">PLN</option>
+                    <option value="GPB">GPB</option>
+                    <option value="USD">USD</option>
+                    <option value="CHF">CHF</option>
+                </select>
+                <input id="input-value" type="number"/>
+            </div>
+            <div class="currency">
+                <select id="output-currency">
+                    <option value="PLN">PLN</option>
+                    <option value="GPB">GPB</option>
+                    <option value="USD">USD</option>
+                    <option value="CHF">CHF</option>
+                </select>
+                <span id="result"></span>
+            </div>
+        </section>
+        <section class="rate">
+
+        </section>
+    </main>
+<script src="index.js"></script>
+</body>
+</html>

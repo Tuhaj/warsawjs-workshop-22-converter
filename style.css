@@ -1,0 +1,17 @@
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+}
+header {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 50px;
+    height: 100px;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 25px 30px;
+}
+main {
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: #eee;
+}
