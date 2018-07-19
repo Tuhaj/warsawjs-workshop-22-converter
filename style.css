@@ -1,6 +1,6 @@
 body {
     font-family: 'Lato', sans-serif;
-    font-size: 14px;
+    font-size: 20px;
 }
 header {
     font-family: 'Fira Sans', sans-serif;
@@ -12,6 +12,70 @@ header {
 }
 main {
     width: 100%;
-    height: calc(100vh - 80px);
-    background-color: #eee;
+    height: calc(100vh - 100px);
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.exchange {
+    display: flex;
+    margin-bottom: 100px;
+}
+.currency {
+    display: flex;
+    align-items: center;
+}
+.arrow img {
+    width: 200px;
+    margin: 0 30px;
+}
+select, option, input, #result {
+    font-size: 35px;
+    background: none;
+    border: none;
+}
+input, #result {
+    border: none;
+    border-bottom: 1px solid #555;
+    background: none;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+.rate {
+    font-size: 35px;
+    display: flex;
+}
+.rate h6 {
+    font-size: 45px;
+    padding: 20px;
+}
+.rate li {
+    padding: 10px 40px;
+}
+.rate li span {
+    display: inline-block;
+}
+.rate li span:first-of-type {
+    min-width: 200px;
+    text-transform: uppercase;
+}
+.rate li span:nth-child(2){
+    font-weight: bold;
+}
+.rate li:nth-child(even) {
+    background-color: white;
+}
+.rate li:nth-child(odd) {
+    background-color: #ddd;
+}
+.warsawjs-logo-container {
+    margin-right: 200px;
+}
+.warsawjs-logo-container img {
+    margin-top: 10px;
+    width: 320px;
 }

@@ -14,26 +14,37 @@
     <main>
         <section class="exchange">
             <div class="currency">
+                <input id="input-value" type="number"/>
                 <select id="input-currency">
                     <option value="PLN">PLN</option>
                     <option value="GPB">GPB</option>
                     <option value="USD">USD</option>
                     <option value="CHF">CHF</option>
                 </select>
-                <input id="input-value" type="number"/>
+            </div>
+            <div class="arrow">
+                <img src="img/arrow.png" alt="->" />
             </div>
             <div class="currency">
+                <span id="result">0</span>
                 <select id="output-currency">
                     <option value="PLN">PLN</option>
                     <option value="GPB">GPB</option>
                     <option value="USD">USD</option>
                     <option value="CHF">CHF</option>
                 </select>
-                <span id="result"></span>
             </div>
         </section>
         <section class="rate">
+            <div class="warsawjs-logo-container">
+                <img src="img/warsawjs.png" alt="WarsawJs" />
+            </div>
+            <div>
+                <h6>Todays <span id="current-rate"></span> rates</h6>
+                <ul>
 
+                </ul>
+            </div>
         </section>
     </main>
 <script src="index.js"></script>
