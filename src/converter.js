@@ -1,15 +1,16 @@
 import NBPService from "./NBPService";
 import Mocks from "./test/mocks";
-import Constants from "./constants";
 
 class WJSConverter {
   constructor(rateList) {
     this.NBPService = new NBPService();
     this.rateList = rateList;
-    this.convertObject = Constants.currenciesTable;
+    this.convertObject = Mocks.currenciesTable;
   }
 
   convert(value, currencyFrom, currencyTo) {
+    console.log('🦑 this.convertObject ', this.convertObject);
+        
     currencyFrom = currencyFrom.toLowerCase();
     currencyTo = currencyTo.toLowerCase();
     if(currencyFrom !== currencyTo) {
