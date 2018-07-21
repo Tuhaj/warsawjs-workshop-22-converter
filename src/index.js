@@ -44,3 +44,5 @@ class WJSConverter {
     };
   }
 }
+
+export default WJSConverter;

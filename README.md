@@ -16,6 +16,10 @@
     - [ ] - project setup
     - [ ] - add conversion object (*)
 - [ ] - Write Tests
-    - [ ] write test to convert function
+    - [ ] write example test: function that greets you
+    - [ ] write test with many cases: that returns a float with always 2 digits after dot, cover rounding.
+    - [ ] write test with many cases: that returns nth fibbonacci number
+    - [ ] write test for a function that converts PLN to dollars, cover edge cases
+- [ ] - Add live server
 
 (*) - extra
