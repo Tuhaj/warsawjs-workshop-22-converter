@@ -1,7 +1,7 @@
 class WJSConverter {
   constructor(rateList) {
     this.rateList = rateList;
-    this.convertObject = this.fetchConvertObject();
+    this.convertObject = this.createConvertObject();
   }
 
   convert(value, currencyFrom, currencyTo) {
@@ -33,7 +33,7 @@ class WJSConverter {
     });
   }
 
-  fetchConvertObject() {
+  createConvertObject() {
     return {
       /*currencyTo: { currencyFrom: rate }*/
       'pln': { 'eur': 4.25, 'usd': 3.59, 'gbp': 4.62, 'chf': 3.69 },
@@ -44,4 +44,3 @@ class WJSConverter {
     };
   }
 }
-
