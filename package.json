@@ -4,6 +4,7 @@
   "description": "WarsawJS Workshops #22 group 3 application - testing exercise app",
   "main": "index.js",
   "scripts": {
+    "start": "parcel index.html",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "eslint .",

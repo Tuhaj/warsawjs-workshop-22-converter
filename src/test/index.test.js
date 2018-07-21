@@ -21,11 +21,11 @@ test('Fetches NBP rate for eur', async () => {
   const resp = Mocks.eurResponse;
   axios.get.mockResolvedValue(resp);
   const service = new NBPService();
-  expect(await service.fetchCurrentRate('eur')).toBe(4.22);
+  expect(await service.fetchCurrentRate('gbp')).toBe(4.22);
 });
 
-test('Creates converting object', () => {
+test('Creates converting object', async () => {
   const rateList = document.querySelector('section.rate ul');
   const Converter = new WJSConverter(rateList);
-  expect(Converter.createConvertObject()).toBe();
+  expect(await Converter.createConvertObject()).toBe(Mocks.currenciesTable);
 })

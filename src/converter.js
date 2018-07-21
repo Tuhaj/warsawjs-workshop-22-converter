@@ -1,10 +1,12 @@
 import NBPService from "./NBPService";
+import Mocks from "./test/mocks";
+import Constants from "./constants";
 
 class WJSConverter {
   constructor(rateList) {
     this.NBPService = new NBPService();
     this.rateList = rateList;
-    this.convertObject = this.createConvertObject();
+    this.convertObject = Constants.currenciesTable;
   }
 
   convert(value, currencyFrom, currencyTo) {
@@ -16,7 +18,8 @@ class WJSConverter {
     return Number(value).toFixed(2);
   }
 
-  generateConvertTable(currentRateContainer, inputCurrency) {
+  async generateConvertTable(currentRateContainer, inputCurrency) {
+    this.convertObject = await this.createConvertObject();
     currentRateContainer.innerText = inputCurrency.value;
     this.rateList.innerHTML = null;
     Object.keys(this.convertObject[inputCurrency.value.toLowerCase()]).map(currencyName => {
@@ -35,23 +38,18 @@ class WJSConverter {
     });
   }
 
-  createConvertObject() {
-    const currencies = ['pln', 'eur', 'usd', 'gbp', 'chf']
-    const currenciesTable = {}
-    currencies.forEach(currency => {
+  async createConvertObject() {
+    const currencies = ['pln', 'eur', 'usd', 'gbp', 'chf'];
+    const currenciesTable = {};
+    currenciesTable['pln'] = {};
+    currencies.forEach(async currency => {
       if (currency !== 'pln') {
-        const currentRate = this.NBPService.fetchCurrentRate(currency)
-        currenciesTable['pln'][currency] = currentRate
+        const currentRate = await this.NBPService.fetchCurrentRate(currency);
+        currenciesTable['pln'][currency] = currentRate;
       }
     })
-    return {
-      /*currencyTo: { currencyFrom: rate }*/
-      'pln': { 'eur': 4.25, 'usd': 3.59, 'gbp': 4.62, 'chf': 3.69 },
-      'eur': { 'pln': 0.23, 'usd': 0.84, 'gbp': 1.08, 'chf': 0.86 },
-      'usd': { 'eur': 1.18, 'pln': 0.27, 'gbp': 1.28, 'chf': 1.03 },
-      'gbp': { 'pln': 0.21, 'eur': 0.92, 'usd': 0.77, 'chf': 0.80 },
-      'chf': { 'pln': 0.27, 'eur': 1.16, 'usd': 0.97, 'gbp': 1.25 }
-    };
+
+    return Mocks.currenciesTable;
   }
 }
 
