@@ -1,5 +1,4 @@
 import WJSConverter from './converter';
-
 const inputCurrency = document.querySelector('#input-currency');
 const outputCurrency = document.querySelector('#output-currency');
 
@@ -16,10 +15,12 @@ inputCurrency.addEventListener('change', () => {
   resultContainer.innerText = Converter.convert(input.value, inputCurrency.value, outputCurrency.value);
   Converter.generateConvertTable(currentRateContainer, inputCurrency);
 });
+
 outputCurrency.addEventListener('change', () => {
   resultContainer.innerText = Converter.convert(input.value, inputCurrency.value, outputCurrency.value);
   Converter.generateConvertTable(currentRateContainer, inputCurrency);
 });
+
 input.addEventListener('keyup', () => {
   resultContainer.innerText = Converter.convert(input.value, inputCurrency.value, outputCurrency.value);
 });

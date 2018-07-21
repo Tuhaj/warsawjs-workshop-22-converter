@@ -2,6 +2,7 @@ const examples = {
   greeting: (name) => {
     return `Hello ${name}!`;
   },
+
   fibbonacci: (nth) => {
     let before = 0;
     let current = 1;
@@ -13,6 +14,7 @@ const examples = {
     }
     return current;
   },
+
   toCurrencyFormat: (number) => {
     let base, reminder, indicator;
     [base, reminder] = number.toString().split('.');
