@@ -7,7 +7,8 @@ test('Converter initializes properly', () => {
 
 test('Use convert function', () => {
   const rateList = document.querySelector('section.rate ul');
-
-  expect().toBeInstanceOf(WJSConverter);
+  const Converter = new WJSConverter(rateList);
+  expect(Converter.convert(100, 'eur', 'pln')).toBe("425.00");
+  expect(Converter.convert(0, 'eur', 'pln')).toBe("0.00");
 
 });
