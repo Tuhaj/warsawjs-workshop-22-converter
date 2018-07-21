@@ -4,7 +4,9 @@
   "description": "WarsawJS Workshops #22 group 3 application - testing exercise app",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "precommit": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,10 @@
   },
   "homepage": "https://github.com/Tuhaj/warsawjs-workshop-22-converter#readme",
   "dependencies": {
-    "jest": "^23.4.1"
+    "babel-jest": "^23.4.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.2.0",
+    "jest": "^23.4.1",
+    "regenerator-runtime": "^0.12.0"
   }
 }
