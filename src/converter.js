@@ -1,11 +1,13 @@
+import NBPService from "./NBPService";
+
 class WJSConverter {
   constructor(rateList) {
+    this.NBPService = new NBPService();
     this.rateList = rateList;
     this.convertObject = this.createConvertObject();
   }
 
   convert(value, currencyFrom, currencyTo) {
-    if(!value) return;
     currencyFrom = currencyFrom.toLowerCase();
     currencyTo = currencyTo.toLowerCase();
     if(currencyFrom !== currencyTo) {
@@ -34,6 +36,14 @@ class WJSConverter {
   }
 
   createConvertObject() {
+    const currencies = ['pln', 'eur', 'usd', 'gbp', 'chf']
+    const currenciesTable = {}
+    currencies.forEach(currency => {
+      if (currency !== 'pln') {
+        const currentRate = this.NBPService.fetchCurrentRate(currency)
+        currenciesTable['pln'][currency] = currentRate
+      }
+    })
     return {
       /*currencyTo: { currencyFrom: rate }*/
       'pln': { 'eur': 4.25, 'usd': 3.59, 'gbp': 4.62, 'chf': 3.69 },

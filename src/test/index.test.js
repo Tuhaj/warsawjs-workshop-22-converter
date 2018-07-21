@@ -14,7 +14,7 @@ test('Use convert function', () => {
   const rateList = document.querySelector('section.rate ul');
   const Converter = new WJSConverter(rateList);
   expect(Converter.convert(100, 'eur', 'pln')).toBe('425.00');
-  // expect(Converter.convert(0, 'eur', 'pln')).toBe("0.00");
+  expect(Converter.convert(0, 'eur', 'pln')).toBe("0.00");
 });
 
 test('Fetches NBP rate for eur', async () => {
@@ -23,3 +23,9 @@ test('Fetches NBP rate for eur', async () => {
   const service = new NBPService();
   expect(await service.fetchCurrentRate('eur')).toBe(4.22);
 });
+
+test('Creates converting object', () => {
+  const rateList = document.querySelector('section.rate ul');
+  const Converter = new WJSConverter(rateList);
+  expect(Converter.createConvertObject()).toBe();
+})
