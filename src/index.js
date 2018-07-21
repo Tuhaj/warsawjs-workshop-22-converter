@@ -5,6 +5,7 @@ class WJSConverter {
   }
 
   convert(value, currencyFrom, currencyTo) {
+    if(!value) return;
     currencyFrom = currencyFrom.toLowerCase();
     currencyTo = currencyTo.toLowerCase();
 
