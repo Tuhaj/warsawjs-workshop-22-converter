@@ -6,6 +6,7 @@ class WJSConverter {
     this.NBPService = new NBPService();
     this.rateList = rateList;
     this.convertObject = Mocks.currenciesTable;
+    this.dataLoaded = false;
   }
 
   convert(value, currencyFrom, currencyTo) {
@@ -45,11 +46,11 @@ class WJSConverter {
     console.log('🦑 rowPLN ', rowPLN);
         
     currencies.forEach((currency) => {
-      const pln = (1 / Number(rowPLN[currency])).toFixed(2);
+      const pln = (1 / rowPLN[currency]).toFixed(2);
       table[currency] = {'pln': pln};
       currencies.forEach((subCurrency) => {
         if(subCurrency !== currency) {
-          table[currency][subCurrency] = ( Number(table['pln'][subCurrency]) / Number(table['pln'][currency]) ).toFixed(2)
+          table[currency][subCurrency] = ( table['pln'][subCurrency] / table['pln'][currency] ).toFixed(2)
         }
       })
     });
@@ -59,19 +60,21 @@ class WJSConverter {
   }
 
   async createConvertObject() {
-    const currencies = ['pln', 'eur', 'usd', 'gbp', 'chf'];
-    const currenciesTable = {};
-    currenciesTable['pln'] = {};
-    for(let i=0; i < currencies.length; i++) {
-      let currency = currencies[i];
-      if (currency !== 'pln') {
-        const currentRate = await this.NBPService.fetchCurrentRate(currency);
-        currenciesTable['pln'][currency] = String(currentRate.toFixed(2));
+    if(!this.dataLoaded) {
+      const currencies = ['pln', 'eur', 'usd', 'gbp', 'chf'];
+      const currenciesTable = {};
+      currenciesTable['pln'] = {};
+      for(let i=0; i < currencies.length; i++) {
+        let currency = currencies[i];
+        if (currency !== 'pln') {
+          const currentRate = await this.NBPService.fetchCurrentRate(currency);
+          currenciesTable['pln'][currency] = Number(currentRate).toFixed(2);
+        }
       }
+      this.convertObject = this.calculateValuesForTable(currenciesTable);
+      this.dataLoaded = true;
     }
-    this.calculateValuesForTable(currenciesTable);
-
-    return Mocks.currenciesTable;
+    return this.convertObject;
   }
 }
 
