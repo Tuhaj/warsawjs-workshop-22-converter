@@ -29,4 +29,12 @@ test('Creates converting object', async () => {
   const rateList = document.querySelector('section.rate ul');
   const Converter = new WJSConverter(rateList);
   expect(await Converter.createConvertObject()).toBe(Mocks.currenciesTable);
+});
+
+test('Calculates table', () => {
+  const rateList = document.querySelector('section.rate ul');
+  const Converter = new WJSConverter(rateList);
+  const input = {'pln': { 'eur': 4.25, 'usd': 3.59, 'gbp': 4.62, 'chf': 3.69 }};
+  const output = Converter.calculateValuesForTable(input);
+  expect(output).toBe(Mocks.currenciesTable);
 })

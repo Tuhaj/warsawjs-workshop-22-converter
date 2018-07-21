@@ -39,16 +39,37 @@ class WJSConverter {
     });
   }
 
+  calculateValuesForTable(table) {
+    const currencies = ['eur', 'usd', 'gbp', 'chf'];
+    const rowPLN = table['pln'];
+    console.log('🦑 rowPLN ', rowPLN);
+        
+    currencies.forEach((currency) => {
+      const pln = (1 / Number(rowPLN[currency])).toFixed(2);
+      table[currency] = {'pln': pln};
+      currencies.forEach((subCurrency) => {
+        if(subCurrency !== currency) {
+          table[currency][subCurrency] = ( Number(table['pln'][subCurrency]) / Number(table['pln'][currency]) ).toFixed(2)
+        }
+      })
+    });
+    console.log('🦑 currencies ', currencies);
+        
+    return table;
+  }
+
   async createConvertObject() {
     const currencies = ['pln', 'eur', 'usd', 'gbp', 'chf'];
     const currenciesTable = {};
     currenciesTable['pln'] = {};
-    currencies.forEach(async currency => {
+    for(let i=0; i < currencies.length; i++) {
+      let currency = currencies[i];
       if (currency !== 'pln') {
         const currentRate = await this.NBPService.fetchCurrentRate(currency);
-        currenciesTable['pln'][currency] = currentRate;
+        currenciesTable['pln'][currency] = String(currentRate.toFixed(2));
       }
-    })
+    }
+    this.calculateValuesForTable(currenciesTable);
 
     return Mocks.currenciesTable;
   }
