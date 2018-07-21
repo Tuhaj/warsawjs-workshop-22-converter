@@ -8,11 +8,10 @@ class WJSConverter {
     if(!value) return;
     currencyFrom = currencyFrom.toLowerCase();
     currencyTo = currencyTo.toLowerCase();
-
     if(currencyFrom !== currencyTo) {
       value *= this.convertObject[currencyTo][currencyFrom];
     }
-    return value.toFixed(2);
+    return Number(value).toFixed(2);
   }
 
   generateConvertTable(currentRateContainer, inputCurrency) {

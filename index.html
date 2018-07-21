@@ -17,7 +17,7 @@
                 <input id="input-value" type="number"/>
                 <select id="input-currency">
                     <option value="PLN">PLN</option>
-                    <option value="GPB">GPB</option>
+                    <option value="GBP">GBP</option>
                     <option value="USD">USD</option>
                     <option value="CHF">CHF</option>
                 </select>
@@ -29,7 +29,7 @@
                 <span id="result">0</span>
                 <select id="output-currency">
                     <option value="PLN">PLN</option>
-                    <option value="GPB">GPB</option>
+                    <option value="GBP">GBP</option>
                     <option value="USD">USD</option>
                     <option value="CHF">CHF</option>
                 </select>
@@ -55,11 +55,11 @@
   const rateList = document.querySelector('section.rate ul');
   const convertObject = {
     /*currencyTo: { currencyFrom: rate }*/
-    'pln': { 'eur': 4.25, 'usd': 3.59, 'gpb': 4.62, 'chf': 3.69, 'pln': 1.0 },
-    'eur': { 'pln': 0.23, 'usd': 0.84, 'gpb': 1.08, 'chf': 0.86, 'eur': 1.0 },
-    'usd': { 'eur': 1.18, 'pln': 0.27, 'gpb': 1.28, 'chf': 1.03, 'usd': 1.0 },
-    'gpb': { 'pln': 0.21, 'eur': 0.92, 'usd': 0.77, 'chf': 0.80, 'gpb': 1.0 },
-    'chf': { 'pln': 0.27, 'eur': 1.16, 'usd': 0.97, 'gpb': 1.25, 'chf': 1.0 }
+    'pln': { 'eur': 4.25, 'usd': 3.59, 'gbp': 4.62, 'chf': 3.69, 'pln': 1.0 },
+    'eur': { 'pln': 0.23, 'usd': 0.84, 'gbp': 1.08, 'chf': 0.86, 'eur': 1.0 },
+    'usd': { 'eur': 1.18, 'pln': 0.27, 'gbp': 1.28, 'chf': 1.03, 'usd': 1.0 },
+    'gbp': { 'pln': 0.21, 'eur': 0.92, 'usd': 0.77, 'chf': 0.80, 'gbp': 1.0 },
+    'chf': { 'pln': 0.27, 'eur': 1.16, 'usd': 0.97, 'gbp': 1.25, 'chf': 1.0 }
   };
 
   const Converter = new WJSConverter(convertObject, rateList);
@@ -72,9 +72,11 @@
 
   inputCurrency.addEventListener('change', () => {
     resultContainer.innerText = Converter.convert(input.value, inputCurrency.value, outputCurrency.value);
+    Converter.generateConvertTable(currentRateContainer, inputCurrency);
   });
   outputCurrency.addEventListener('change', () => {
     resultContainer.innerText = Converter.convert(input.value, inputCurrency.value, outputCurrency.value);
+    Converter.generateConvertTable(currentRateContainer, inputCurrency);
   });
   input.addEventListener('keyup', () => {
     resultContainer.innerText = Converter.convert(input.value, inputCurrency.value, outputCurrency.value);
