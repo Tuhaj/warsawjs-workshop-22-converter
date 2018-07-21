@@ -20,6 +20,6 @@
     - [ ] write test with many cases: that returns a float with always 2 digits after dot, cover rounding.
     - [ ] write test with many cases: that returns nth fibbonacci number
     - [ ] write test for a function that converts PLN to dollars, cover edge cases
-- [ ] - Add live server
+- [ ] - Add parcel for module bundling
 
 (*) - extra

@@ -1,4 +1,4 @@
-import WJSConverter from './index';
+import WJSConverter from './converter';
 
 test('Converter initializes properly', () => {
   const rateList = document.querySelector('section.rate ul');
