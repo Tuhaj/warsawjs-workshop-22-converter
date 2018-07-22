@@ -10,8 +10,6 @@ class WJSConverter {
   }
 
   convert(value, currencyFrom, currencyTo) {
-    console.log('🦑 this.convertObject ', this.convertObject);
-        
     currencyFrom = currencyFrom.toLowerCase();
     currencyTo = currencyTo.toLowerCase();
     if(currencyFrom !== currencyTo) {
@@ -43,8 +41,7 @@ class WJSConverter {
   calculateValuesForTable(table) {
     const currencies = ['eur', 'usd', 'gbp', 'chf'];
     const rowPLN = table['pln'];
-    console.log('🦑 rowPLN ', rowPLN);
-        
+
     currencies.forEach((currency) => {
       const pln = (1 / rowPLN[currency]).toFixed(2);
       table[currency] = {'pln': pln};
@@ -54,8 +51,6 @@ class WJSConverter {
         }
       })
     });
-    console.log('🦑 currencies ', currencies);
-        
     return table;
   }
 

@@ -9,7 +9,7 @@ class NBPService {
   async fetchCurrentRate(currency) {
     const currencyInfoSource = `${this.url}${currency}/last/?format=json`;
     const response = await axios.get(currencyInfoSource).then(response => {
-      return response.rates[0].mid;
+      return response.data.rates[0].mid;
     }).catch(error => error);
     return response;
   }
